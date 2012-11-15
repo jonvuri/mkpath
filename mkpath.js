@@ -3,16 +3,16 @@ var path = require('path');
 
 var mkpath = function mkpath(dirpath, mode, callback) {
     dirpath = path.resolve(dirpath);
-    
+
     if (typeof mode === 'function' || typeof mode === 'undefined') {
         callback = mode;
         mode = 0777 & (~process.umask());
     }
-    
+
     if (!callback) {
         callback = function () {};
     }
-    
+
     fs.stat(dirpath, function (err, stats) {
         if (err) {
             if (err.code === 'ENOENT') {
@@ -36,11 +36,11 @@ var mkpath = function mkpath(dirpath, mode, callback) {
 
 mkpath.sync = function mkpathsync(dirpath, mode) {
     dirpath = path.resolve(dirpath);
-    
+
     if (typeof mode === 'undefined') {
         mode = 0777 & (~process.umask());
     }
-    
+
     try {
         if (!fs.statSync(dirpath).isDirectory()) {
             throw new Error(dirpath + ' exists and is not a directory');

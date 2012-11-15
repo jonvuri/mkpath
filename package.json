@@ -16,7 +16,7 @@
     ],
     "main": "./mkpath",
     "scripts": {
-        "test": "tap ./test || node node_modules/tap/bin/tap.js ./test"
+        "test": "node node_modules/tap/bin/tap.js ./test"
     },
     "devDependencies": {
         "tap": "~0.3"

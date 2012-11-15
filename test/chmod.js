@@ -1,4 +1,7 @@
-var mkdirp = require('../').mkdirp;
+/* Tests borrowed from substack's node-mkdirp
+ * https://github.com/substack/node-mkdirp */
+
+var mkpath = require('../');
 var path = require('path');
 var fs = require('fs');
 var test = require('tap').test;
@@ -14,7 +17,7 @@ var file = ps.join('/');
 
 test('chmod-pre', function (t) {
     var mode = 0744
-    mkdirp(file, mode, function (er) {
+    mkpath(file, mode, function (er) {
         t.ifError(er, 'should not error');
         fs.stat(file, function (er, stat) {
             t.ifError(er, 'should exist');
@@ -27,7 +30,7 @@ test('chmod-pre', function (t) {
 
 test('chmod', function (t) {
     var mode = 0755
-    mkdirp(file, mode, function (er) {
+    mkpath(file, mode, function (er) {
         t.ifError(er, 'should not error');
         fs.stat(file, function (er, stat) {
             t.ifError(er, 'should exist');
@@ -36,3 +39,4 @@ test('chmod', function (t) {
         });
     });
 });
+

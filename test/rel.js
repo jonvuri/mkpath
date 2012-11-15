@@ -1,4 +1,7 @@
-var mkdirp = require('../');
+/* Tests borrowed from substack's node-mkdirp
+ * https://github.com/substack/node-mkdirp */
+
+var mkpath = require('../');
 var path = require('path');
 var fs = require('fs');
 var test = require('tap').test;
@@ -14,7 +17,7 @@ test('rel', function (t) {
     
     var file = [x,y,z].join('/');
     
-    mkdirp(file, 0755, function (err) {
+    mkpath(file, 0755, function (err) {
         if (err) t.fail(err);
         else path.exists(file, function (ex) {
             if (!ex) t.fail('file not created')
@@ -30,3 +33,4 @@ test('rel', function (t) {
         })
     });
 });
+

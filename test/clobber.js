@@ -1,4 +1,7 @@
-var mkdirp = require('../').mkdirp;
+/* Tests borrowed from substack's node-mkdirp
+ * https://github.com/substack/node-mkdirp */
+
+var mkpath = require('../');
 var path = require('path');
 var fs = require('fs');
 var test = require('tap').test;
@@ -29,9 +32,10 @@ test('clobber-pre', function (t) {
 
 test('clobber', function (t) {
     t.plan(2);
-    mkdirp(file, 0755, function (err) {
+    mkpath(file, 0755, function (err) {
         t.ok(err);
         t.equal(err.code, 'ENOTDIR');
         t.end();
     });
 });
+

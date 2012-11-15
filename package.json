@@ -16,10 +16,10 @@
     ],
     "main": "./mkpath",
     "scripts": {
-        "test": "mocha --ui exports || node_modules/mocha/bin/mocha --ui exports"
+        "test": "tap ./test || node node_modules/tap/bin/tap.js ./test"
     },
     "devDependencies": {
-        "mocha": "~1.7"
+        "tap": "~0.3"
     },
-    "license": "MIT",
+    "license": "MIT"
 }

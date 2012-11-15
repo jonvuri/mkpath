@@ -1,4 +1,7 @@
-var mkdirp = require('../');
+/* Tests borrowed from substack's node-mkdirp
+ * https://github.com/substack/node-mkdirp */
+
+var mkpath = require('../');
 var path = require('path');
 var fs = require('fs');
 var test = require('tap').test;
@@ -11,7 +14,7 @@ test('implicit mode from umask', function (t) {
     
     var file = '/tmp/' + [x,y,z].join('/');
     
-    mkdirp(file, function (err) {
+    mkpath(file, function (err) {
         if (err) t.fail(err);
         else path.exists(file, function (ex) {
             if (!ex) t.fail('file not created')
@@ -26,3 +29,4 @@ test('implicit mode from umask', function (t) {
         })
     });
 });
+

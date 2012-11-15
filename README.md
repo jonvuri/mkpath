@@ -1,5 +1,7 @@
 # mkpath
 
+Make all directories in a path, like `mkdir -p`.
+
 ## How to use
 
     var mkpath = require('mkpath');
@@ -11,13 +13,13 @@
     
     mkpath.sync('/tmp/blue/orange', 0700);
 
-### mkpath(path, [mode,] [callback])
+### mkpath(path, [mode = 0777 & (~process.umask()),] [callback])
 
-Create all directories that don't exist in `path` with permissions `mode` (`0777 & (~process.umask())` by default). When finished, `callback(err)` fires with the error, if any.
+Create all directories that don't exist in `path` with permissions `mode`. When finished, `callback(err)` fires with the error, if any.
 
-### mkpath.sync(path, [mode]);
+### mkpath.sync(path, [mode = 0777 & (~process.umask())]);
 
-Synchronous version of the same.
+Synchronous version of the same. Throws error, if any.
 
 ## License
 

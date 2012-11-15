@@ -1,9 +1,9 @@
 var fs = require('fs');
 var path = require('path');
 
-module.exports = mkdirp.mkdirp = mkdirp;
+module.exports = mkpath;
 
-function mkdirp(dirpath, mode, callback) {
+function mkpath(dirpath, mode, callback) {
     dirpath = path.resolve(dirpath);
     if (typeof mode === 'function' || typeof mode === 'undefined') {
         callback = mode;
@@ -16,7 +16,7 @@ function mkdirp(dirpath, mode, callback) {
     fs.stat(dirpath, function (err, stats) {
         if (err) {
             if (err.code === 'ENOENT') {
-                mkdirp(path.dirname(dirpath), mode, function (err) {
+                mkpath(path.dirname(dirpath), mode, function (err) {
                     if (err) {
                         callback(err);
                     } else {
@@ -33,3 +33,6 @@ function mkdirp(dirpath, mode, callback) {
         }
     });
 };
+
+// TODO: Add sync
+

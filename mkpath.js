@@ -20,7 +20,13 @@ var mkpath = function mkpath(dirpath, mode, callback) {
                     if (err) {
                         callback(err);
                     } else {
-                        fs.mkdir(dirpath, mode, callback);
+                        fs.mkdir(dirpath, mode, function (err) {
+                            if (!err || err.code == 'EEXIST') {
+                                callback(null);
+                            } else {
+                                callback(err);
+                            }
+                        });
                     }
                 });
             } else {

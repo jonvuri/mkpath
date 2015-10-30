@@ -1,6 +1,6 @@
 {
     "name": "mkpath",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "author": "Jonathan Rajavuori <jrajav@gmail.com>",
     "description": "Make all directories in a path, like mkdir -p",
     "repository": {
@@ -16,7 +16,7 @@
     ],
     "main": "./mkpath",
     "scripts": {
-        "test": "node node_modules/tap/bin/tap.js ./test"
+        "test": "node node_modules/tap/bin/tap.js ./test/*.js"
     },
     "devDependencies": {
         "tap": "~0.3"

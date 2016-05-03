@@ -1,3 +1,5 @@
+'use strict';
+
 var fs = require('fs');
 var path = require('path');
 
@@ -6,7 +8,7 @@ var mkpath = function mkpath(dirpath, mode, callback) {
 
     if (typeof mode === 'function' || typeof mode === 'undefined') {
         callback = mode;
-        mode = 0777 & (~process.umask());
+        mode = parseInt('0777', 8) & (~process.umask());
     }
 
     if (!callback) {
@@ -44,7 +46,7 @@ mkpath.sync = function mkpathsync(dirpath, mode) {
     dirpath = path.resolve(dirpath);
 
     if (typeof mode === 'undefined') {
-        mode = 0777 & (~process.umask());
+        mode = parseInt('0777', 8) & (~process.umask());
     }
 
     try {

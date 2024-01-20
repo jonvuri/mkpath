@@ -1,21 +1,20 @@
 /* Tests borrowed from substack's node-mkdirp
  * https://github.com/substack/node-mkdirp */
+const mkpath = require('../');
+const fs = require('fs');
+const test = require('tap').test;
 
-var mkpath = require('../');
-var fs = require('fs');
-var test = require('tap').test;
+let ps = [ '', 'tmp' ];
 
-var ps = [ '', 'tmp' ];
-
-for (var i = 0; i < 25; i++) {
-    var dir = Math.floor(Math.random() * Math.pow(16,4)).toString(16);
+for (let i = 0; i < 25; i++) {
+    const dir = Math.floor(Math.random() * Math.pow(16,4)).toString(16);
     ps.push(dir);
 }
 
-var file = ps.join('/');
+let file = ps.join('/');
 
 test('chmod-pre', function (t) {
-    var mode = 0744
+    let mode = 0744;
     mkpath(file, mode, function (er) {
         t.ifError(er, 'should not error');
         fs.stat(file, function (er, stat) {
@@ -28,7 +27,7 @@ test('chmod-pre', function (t) {
 });
 
 test('chmod', function (t) {
-    var mode = 0755
+    let mode = 0755;
     mkpath(file, mode, function (er) {
         t.ifError(er, 'should not error');
         fs.stat(file, function (er, stat) {

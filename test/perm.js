@@ -1,9 +1,9 @@
 /* Tests borrowed from substack's node-mkdirp
  * https://github.com/substack/node-mkdirp */
 
-var mkpath = require('../');
-var fs = require('fs');
-var test = require('tap').test;
+ const mkpath = require('../');
+ const fs = require('fs');
+ const test = require('tap').test;
 
 test('async perm', function (t) {
     t.plan(2);

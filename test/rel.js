@@ -1,20 +1,20 @@
 /* Tests borrowed from substack's node-mkdirp
  * https://github.com/substack/node-mkdirp */
 
-var mkpath = require('../');
-var fs = require('fs');
-var test = require('tap').test;
+const mkpath = require('../');
+const fs = require('fs');
+const test = require('tap').test;
 
 test('rel', function (t) {
     t.plan(2);
-    var x = Math.floor(Math.random() * Math.pow(16,4)).toString(16);
-    var y = Math.floor(Math.random() * Math.pow(16,4)).toString(16);
-    var z = Math.floor(Math.random() * Math.pow(16,4)).toString(16);
+    const x = Math.floor(Math.random() * Math.pow(16,4)).toString(16);
+    const y = Math.floor(Math.random() * Math.pow(16,4)).toString(16);
+    const z = Math.floor(Math.random() * Math.pow(16,4)).toString(16);
     
-    var cwd = process.cwd();
+    let cwd = process.cwd();
     process.chdir('/tmp');
     
-    var file = [x,y,z].join('/');
+    let file = [x,y,z].join('/');
     
     mkpath(file, 0755, function (err) {
         if (err) t.fail(err);
@@ -29,4 +29,3 @@ test('rel', function (t) {
         })
     });
 });
-

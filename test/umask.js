@@ -1,18 +1,18 @@
 /* Tests borrowed from substack's node-mkdirp
  * https://github.com/substack/node-mkdirp */
 
-var mkpath = require('../');
-var path = require('path');
-var fs = require('fs');
-var test = require('tap').test;
+const mkpath = require('../');
+const path = require('path');
+const fs = require('fs');
+const test = require('tap').test;
 
 test('implicit mode from umask', function (t) {
     t.plan(2);
-    var x = Math.floor(Math.random() * Math.pow(16,4)).toString(16);
-    var y = Math.floor(Math.random() * Math.pow(16,4)).toString(16);
-    var z = Math.floor(Math.random() * Math.pow(16,4)).toString(16);
+    const x = Math.floor(Math.random() * Math.pow(16,4)).toString(16);
+    const y = Math.floor(Math.random() * Math.pow(16,4)).toString(16);
+    const z = Math.floor(Math.random() * Math.pow(16,4)).toString(16);
     
-    var file = '/tmp/' + [x,y,z].join('/');
+    let file = '/tmp/' + [x,y,z].join('/');
     
     mkpath(file, function (err) {
         if (err) t.fail(err);
@@ -26,4 +26,3 @@ test('implicit mode from umask', function (t) {
         })
     });
 });
-

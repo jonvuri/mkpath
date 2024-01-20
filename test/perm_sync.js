@@ -1,13 +1,13 @@
 /* Tests borrowed from substack's node-mkdirp
  * https://github.com/substack/node-mkdirp */
 
-var mkpath = require('../');
-var fs = require('fs');
-var test = require('tap').test;
+const mkpath = require('../');
+const fs = require('fs');
+const test = require('tap').test;
 
 test('sync perm', function (t) {
     t.plan(2);
-    var file = '/tmp/' + (Math.random() * (1<<30)).toString(16) + '.json';
+    let file = '/tmp/' + (Math.random() * (1<<30)).toString(16) + '.json';
     
     mkpath.sync(file, 0755);
     fs.stat(file, function (err, stat) {
@@ -23,7 +23,7 @@ test('sync perm', function (t) {
 test('sync root perm', function (t) {
     t.plan(1);
     
-    var file = '/tmp';
+    let file = '/tmp';
     mkpath.sync(file, 0755);
     fs.stat(file, function (err, stat) {
         if (err) t.fail(err)
@@ -33,4 +33,3 @@ test('sync root perm', function (t) {
         }
     })
 });
-

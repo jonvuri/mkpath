@@ -1,21 +1,21 @@
 /* Tests borrowed from substack's node-mkdirp
  * https://github.com/substack/node-mkdirp */
 
-var mkpath = require('../');
-var fs = require('fs');
-var test = require('tap').test;
+ const mkpath = require('../');
+const fs = require('fs');
+const test = require('tap').test;
 
-var ps = [ '', 'tmp' ];
+let ps = [ '', 'tmp' ];
 
-for (var i = 0; i < 25; i++) {
-    var dir = Math.floor(Math.random() * Math.pow(16,4)).toString(16);
+for (let i = 0; i < 25; i++) {
+    const dir = Math.floor(Math.random() * Math.pow(16,4)).toString(16);
     ps.push(dir);
 }
 
-var file = ps.join('/');
+let file = ps.join('/');
 
 // a file in the way
-var itw = ps.slice(0, 3).join('/');
+const itw = ps.slice(0, 3).join('/');
 
 
 test('clobber-pre', function (t) {
@@ -37,4 +37,3 @@ test('clobber', function (t) {
         t.end();
     });
 });
-

@@ -1,9 +1,10 @@
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
+const fs = require('fs');
+const path = require('path');
 
-var mkpath = function mkpath(dirpath, mode, callback) {
+// thing below could be const as well in case we are not changing it, but it seems like we does
+let mkpath = function mkpath(dirpath, mode, callback) {
     dirpath = path.resolve(dirpath);
 
     if (typeof mode === 'function' || typeof mode === 'undefined') {
@@ -64,4 +65,3 @@ mkpath.sync = function mkpathsync(dirpath, mode) {
 };
 
 module.exports = mkpath;
-
